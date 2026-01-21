@@ -41,6 +41,7 @@
     "@types/lodash": "4.14.182",
     "core-js": "^3.38.0",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "29.7.0",
     "prettier": "3.2.5",
     "rollup": "4.14.3",
     "rollup-plugin-delete": "2.0.0",

@@ -124,7 +124,7 @@ export const prepareFormattedValue = (
         return value;
       }
 
-      const dateTimeValue = dayjs(value);
+      const dateTimeValue = dayjs(value).locale(language);
 
       if (!dateTimeValue.isValid()) {
         return "-";
