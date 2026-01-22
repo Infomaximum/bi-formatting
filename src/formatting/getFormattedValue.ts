@@ -1,8 +1,9 @@
 import type { ELanguages } from "@infomaximum/localization";
-import type { EFormattingPresets, EFormatTypes } from "./utils/const";
+import type { EFormatTypes } from "./utils/const";
 import { prepareFormattedValue } from "./prepareFormattedValue";
 import { prepareFormattingTemplate } from "./prepareFormattingTemplate";
 import { getFormattingRuleSettings } from "./getFormattingRuleSettings";
+import type { TNullable } from "@infomaximum/utility/dist/utils/types/utility.types";
 
 export const getFormattedValue = ({
   formatType,
@@ -12,7 +13,7 @@ export const getFormattedValue = ({
 }: {
   value: any;
   formatType: EFormatTypes;
-  formatting: EFormattingPresets | undefined;
+  formatting: TNullable<string>;
   language: ELanguages;
 }) => {
   const formattingRuleSettings = getFormattingRuleSettings(

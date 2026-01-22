@@ -4,7 +4,7 @@ import { getDefaultFormattingTemplate } from "./utils/getDefaultFormattingTempla
 
 export const prepareFormattingTemplate = (
   format: TNullable<EFormatTypes>,
-  formattingValue: EFormattingPresets | undefined
+  formattingValue: TNullable<string>
 ) => {
   // Обработка AUTO-форматирования для различных типов
   if (formattingValue === EFormattingPresets.AUTO) {
