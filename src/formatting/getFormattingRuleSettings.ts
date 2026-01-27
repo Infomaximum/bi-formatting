@@ -13,7 +13,7 @@ import type { TNullable } from "@infomaximum/utility/dist/utils/types/utility.ty
  * @param formatTemplate {string} - шаблон форматирования, если не указан, то вернутся пустые правила
  */
 export const getFormattingRuleSettings = (
-  formatType: EFormatTypes,
+  formatType: EFormatTypes | string,
   formatTemplate: TNullable<string>
 ): TFormattingRuleSettings => {
   const settings: TFormattingRuleSettings = {

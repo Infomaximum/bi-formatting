@@ -82,7 +82,7 @@ export type TNumberFormattingRuleList = TNumberFormattingRule[];
 
 export type TFormattingRuleSettings = {
   /** Формат, для которого готовятся правила */
-  formatType: EFormatTypes;
+  formatType: EFormatTypes | string;
   /** Описание как форматировать значение с форматом = число {EFormatTypes.NUMBER} */
   numberFormattingRules?: TNullable<TNumberFormattingRuleList>;
   /** Описание как форматировать значение с форматом = месяц {EFormatTypes.MONTH} или день недели {EFormatTypes.DAY_OF_WEEK} */

@@ -17,6 +17,7 @@ import { getFormattedQuarterAndYearByRule } from "./utils/getFormattedQuarterAnd
 import { getFormattedDayOfWeekByRule } from "./utils/getFormattedDayOfWeekByRule";
 import { getFormattedMonthByRule } from "./utils/getFormattedMonthByRule";
 import { getFormattedNumberByRule } from "./utils/getFormattedNumberByRule";
+import { isFormatType } from "./utils/isFormatType";
 
 export const prepareFormattedValue = (
   value: any,
@@ -29,6 +30,10 @@ export const prepareFormattedValue = (
 
   try {
     const formatType = conf.formatType;
+
+    if (!isFormatType(formatType)) {
+      return value;
+    }
 
     const preparedValue = getPreparedValue(value);
     const preparedValueString = preparedValue ? preparedValue.toString() : undefined;
@@ -137,7 +142,7 @@ export const prepareFormattedValue = (
       ) {
         return getFormattedDateTimeByTemplate(
           dateTimeValue,
-          getDefaultFormattingTemplate(conf.formatType),
+          getDefaultFormattingTemplate(formatType),
           language
         );
       }

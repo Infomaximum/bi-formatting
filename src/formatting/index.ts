@@ -3,6 +3,7 @@ export { prepareFormattedValue } from "./prepareFormattedValue";
 export { getFormattingRuleSettings } from "./getFormattingRuleSettings";
 export { prepareFormattingTemplate } from "./prepareFormattingTemplate";
 export { getAbbreviatedNumber } from "./utils/getAbbreviatedNumber";
+export { isFormatType } from "./utils/isFormatType";
 export {
   EFormatTypes,
   EFormattingPresets,
