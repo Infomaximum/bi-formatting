@@ -91,7 +91,7 @@ export const getFormattedSegments = (
     if (durationLoc && segmentLength === 3) {
       const formattedSegmentValue = `${valuesOfExistingSegment.lessThan(10) ? 0 : ""}${segmentValue}${
         hasEnding ? " " : ""
-      }${Localization.getLocalizedTextSafe(language, durationLoc)}`;
+      }${language === ELanguages.ru && !hasEnding ? " " : ""}${Localization.getLocalizedTextSafe(language, durationLoc)}`;
 
       result.set(
         segment,
