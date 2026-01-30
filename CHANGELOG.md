@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/Infomaximum/bi-formatting/compare/v1.1.2...v1.1.3) (2026-01-30)
+
+
+### Bug Fixes
+
+* добавлен пробел к локализациям числовых разрядов ([48d0bbc](https://github.com/Infomaximum/bi-formatting/commit/48d0bbc4bd44d2156a5ecab5f259b8d54a3ff033))
+
 ### [1.1.2](https://github.com/Infomaximum/bi-formatting/compare/v1.1.1...v1.1.2) (2026-01-22)
 
 ### [1.1.1](https://github.com/Infomaximum/bi-formatting/compare/v1.1.0...v1.1.1) (2026-01-22)
