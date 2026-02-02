@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Infomaximum/bi-formatting/compare/v1.1.3...v1.2.0) (2026-02-02)
+
+
+### Features
+
+* поддержано изменение типизации format ([13acfd1](https://github.com/Infomaximum/bi-formatting/commit/13acfd1f8dcf623c0cf64a3ad4652d9a207354b4))
+
 ### [1.1.3](https://github.com/Infomaximum/bi-formatting/compare/v1.1.2...v1.1.3) (2026-01-30)
 
 
