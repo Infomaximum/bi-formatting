@@ -1,5 +1,5 @@
 import { ELanguages, Localization } from "@infomaximum/localization";
-import { charDurationWithLocMap, msInsideSegment } from "./const";
+import { charDurationWithLocMap, magnitudeLocMap, msInsideSegment } from "./const";
 import Decimal from "decimal.js";
 import { forEach, toNumber } from "lodash";
 import type { IDurationRule } from "../types";
@@ -42,7 +42,9 @@ export const getFormattedSegments = (
 
     if (/k/gi.test(segment)) {
       const abbreviatedRes = getAbbreviatedNumber(segmentValue);
-      const abbreviatedValue = `${abbreviatedRes.modifiedValue}${abbreviatedRes.ending}`;
+      const ending = abbreviatedRes.ending ?? ""
+      const durationLoc = magnitudeLocMap.get(ending)
+      const abbreviatedValue = `${abbreviatedRes.modifiedValue}${durationLoc ? Localization.getLocalizedTextSafe(language, durationLoc) : ending}`;
       calculatedSegmentsValue.set(segment, abbreviatedValue);
     } else {
       calculatedSegmentsValue.set(segment, segmentValue);
