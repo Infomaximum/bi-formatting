@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/Infomaximum/bi-formatting/compare/v1.2.0...v1.3.0) (2026-02-27)
+
+
+### Features
+
+* добавлено форматирование для длительности ([dd17a94](https://github.com/Infomaximum/bi-formatting/commit/dd17a94a8e3231ad380a2ce96372e791cdc15c8d))
+
 ## [1.2.0](https://github.com/Infomaximum/bi-formatting/compare/v1.1.3...v1.2.0) (2026-02-02)
 
 
