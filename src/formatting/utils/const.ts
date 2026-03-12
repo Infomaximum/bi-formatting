@@ -1,30 +1,8 @@
 import {
-  APRIL,
-  AUGUST,
-  DECEMBER,
-  FEBRUARY,
-  JANUARY,
-  JUNE,
-  JULY,
-  MARCH,
-  NOVEMBER,
-  OCTOBER,
-  SEPTEMBER,
   CHAR_D,
   CHAR_H,
   CHAR_M,
   CHAR_S,
-  JAN,
-  FEB,
-  MAR,
-  APR,
-  JUN,
-  JUL,
-  AUG,
-  SEP,
-  OCT,
-  NOV,
-  DEC,
   MONDAY,
   TUESDAY,
   WEDNESDAY,
@@ -39,7 +17,6 @@ import {
   FR,
   SA,
   SU,
-  MAY,
   B,
   E,
   M,
@@ -55,114 +32,6 @@ import {
 } from "@infomaximum/utility";
 import type { TLocalizationDescription } from "@infomaximum/localization";
 import { type IDurationRule } from "../types";
-
-/**
- * Массив месяцев с локализацией
- */
-export const monthsWithLoc: { fieldName: string; loc: TLocalizationDescription }[] = [
-  {
-    fieldName: "JANUARY",
-    loc: JANUARY,
-  },
-  {
-    fieldName: "FEBRUARY",
-    loc: FEBRUARY,
-  },
-  {
-    fieldName: "MARCH",
-    loc: MARCH,
-  },
-  {
-    fieldName: "APRIL",
-    loc: APRIL,
-  },
-  {
-    fieldName: "MAY",
-    loc: MAY,
-  },
-  {
-    fieldName: "JUNE",
-    loc: JUNE,
-  },
-  {
-    fieldName: "JULY",
-    loc: JULY,
-  },
-  {
-    fieldName: "AUGUST",
-    loc: AUGUST,
-  },
-  {
-    fieldName: "SEPTEMBER",
-    loc: SEPTEMBER,
-  },
-  {
-    fieldName: "OCTOBER",
-    loc: OCTOBER,
-  },
-  {
-    fieldName: "NOVEMBER",
-    loc: NOVEMBER,
-  },
-  {
-    fieldName: "DECEMBER",
-    loc: DECEMBER,
-  },
-];
-
-/**
- * Массив сокращенных месяцев с локализацией
- */
-export const shortMonthsWithLoc: { fieldName: string; loc: TLocalizationDescription }[] = [
-  {
-    fieldName: "JAN",
-    loc: JAN,
-  },
-  {
-    fieldName: "FEB",
-    loc: FEB,
-  },
-  {
-    fieldName: "MAR",
-    loc: MAR,
-  },
-  {
-    fieldName: "APR",
-    loc: APR,
-  },
-  {
-    fieldName: "MAY",
-    loc: MAY,
-  },
-  {
-    fieldName: "JUN",
-    loc: JUN,
-  },
-  {
-    fieldName: "JUL",
-    loc: JUL,
-  },
-  {
-    fieldName: "AUG",
-    loc: AUG,
-  },
-  {
-    fieldName: "SEP",
-    loc: SEP,
-  },
-  {
-    fieldName: "OCT",
-    loc: OCT,
-  },
-  {
-    fieldName: "NOV",
-    loc: NOV,
-  },
-  {
-    fieldName: "DEC",
-    loc: DEC,
-  },
-];
 
 /** Символы разряда числа */
 export enum EDepthSymbols {
