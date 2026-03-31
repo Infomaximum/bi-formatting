@@ -7,6 +7,16 @@ type TGetMonthLocParams = {
   genitive?: boolean;
 };
 
+/**
+ * Создаёт дату с фиксированным первым числом для заданного месяца.
+ * Intl.DateTimeFormat требует полный объект Date, чтобы вернуть название месяца —
+ * самостоятельно указать только месяц API не позволяет.
+ * День намеренно зафиксирован на 1-м числе: если использовать текущий день
+ * (например, 31-е), то для месяцев с меньшим количеством дней произойдёт
+ * переполнение и Date сдвинется на следующий месяц.
+ */
+const getDateForMonth = (numberOfMonth: number) => new Date(2000, numberOfMonth - 1, 1);
+
 export const getMonthLoc = ({
   language,
   numberOfMonth,
@@ -17,7 +27,7 @@ export const getMonthLoc = ({
     day: genitive ? "numeric" : undefined,
     month: lengthFormat,
   })
-    .formatToParts(new Date().setMonth(numberOfMonth - 1))
+    .formatToParts(getDateForMonth(numberOfMonth))
     .find((p) => p.type === "month");
 
   if (!monthFormat) {
