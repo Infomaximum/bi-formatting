@@ -485,7 +485,7 @@ describe("Test getFormattedValue function", () => {
         formatType: EFormatTypes.DATE,
         dateTimeFormattingTemplate: "dddd, D MMMM YYYY",
       },
-      expected: "воскресенье, 30 июнь 2024",
+      expected: "воскресенье, 30 июня 2024",
     },
     {
       value: null,

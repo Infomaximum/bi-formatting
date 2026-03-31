@@ -1,6 +1,7 @@
-import { ELanguages, Localization } from "@infomaximum/localization";
-import { EFormattingPresets, monthsWithLoc, shortMonthsWithLoc } from "./const";
+import { ELanguages } from "@infomaximum/localization";
+import { EFormattingPresets } from "./const";
 import type { TNullable } from "@infomaximum/utility/dist/utils/types/utility.types";
+import { getMonthLoc } from "./getMonthLoc";
 
 /**
  * Форматирует месяц, согласно переданному правилу
@@ -14,19 +15,11 @@ export const getFormattedMonthByRule = (
   language: ELanguages
 ): string => {
   if (rule === EFormattingPresets.MMMM) {
-    const month = monthsWithLoc[value - 1];
-
-    if (month) {
-      return Localization.getLocalizedTextSafe(language, month.loc);
-    }
+    return getMonthLoc({ language, numberOfMonth: value, lengthFormat: "long" });
   }
 
   if (rule === EFormattingPresets.MMM) {
-    const shortMonth = shortMonthsWithLoc[value - 1];
-
-    if (shortMonth) {
-      return Localization.getLocalizedTextSafe(language, shortMonth.loc);
-    }
+    return getMonthLoc({ language, numberOfMonth: value, lengthFormat: "short" });
   }
 
   if (rule === EFormattingPresets.MM) {

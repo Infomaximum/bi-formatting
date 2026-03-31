@@ -10,6 +10,14 @@ const ruTestCases = {
   2: { numberMonth: 11, template: "MM/YYYY", result: "MM/YYYY" },
   3: { numberMonth: 9, template: "MMM YYYY", result: "[Сен] YYYY" },
   4: { numberMonth: 3, template: "MMMM.YYYY", result: "[Март].YYYY" },
+  5: { numberMonth: 1, template: "DMMMM.YYYY", result: "D[Января].YYYY" },
+  6: { numberMonth: 1, template: "DDMMMM.YYYY", result: "DD[Января].YYYY" },
+  7: { numberMonth: 1, template: "MMMMDD", result: "[Январь]DD" },
+  8: { numberMonth: 1, template: "DD  MMMM.YYYY", result: "DD  [Января].YYYY" },
+  9: { numberMonth: 1, template: "MMMM DD MMMM", result: "[Январь] DD [Января]" },
+  10: { numberMonth: 1, template: "MMMMDDMMMM", result: "[Январь]DD[Января]" },
+  11: { numberMonth: 1, template: "YYYY MMMM", result: "YYYY [Январь]" },
+  12: { numberMonth: 1, template: "DD.MMMM", result: "DD.[Январь]" },
 };
 
 const enTestCases = {
