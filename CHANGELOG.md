@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/Infomaximum/bi-formatting/compare/v1.3.0...v1.4.0) (2026-04-01)
+
+
+### Features
+
+* добавлен учет падежа для месяцев ([5ab379e](https://github.com/Infomaximum/bi-formatting/commit/5ab379e6ddb51209ee20f156a7b640715a5762be))
+
+
+### Bug Fixes
+
+* исправлено переполнение месяца при получении локализованного названия ([fb34564](https://github.com/Infomaximum/bi-formatting/commit/fb345641fcdef9818a3abe839c74891e1dd0a136))
+
 ## [1.3.0](https://github.com/Infomaximum/bi-formatting/compare/v1.2.0...v1.3.0) (2026-02-27)
 
 
