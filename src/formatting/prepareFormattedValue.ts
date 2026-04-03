@@ -36,7 +36,7 @@ export const prepareFormattedValue = (
     }
 
     const preparedValue = getPreparedValue(value);
-    const preparedValueString = preparedValue ? preparedValue.toString() : undefined;
+    const preparedValueString = preparedValue ? String(value) : "";
     const isDecimalValue = preparedValue instanceof Decimal;
 
     if (isFormatValueToNumber(formatType)) {
