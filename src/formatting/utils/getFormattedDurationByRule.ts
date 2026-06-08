@@ -5,6 +5,9 @@ import type { TNullable } from "@infomaximum/utility/dist/utils/types/utility.ty
 import { getFormattedSegments } from "./getFormattedSegments";
 import { isString } from "lodash";
 
+/** Управляющий символ-разделитель плейсхолдера: его нет ни в шаблоне, ни в значениях сегментов. */
+const PLACEHOLDER_BOUND = String.fromCharCode(0);
+
 /**
  * Метод на основании данных(миллисекунды, правила, локализация) сначала проверяет ошибки, если они имеются, то
  * возвращается строка, что не правильно введен шаблон, если их нет, то через метод  getFormattedSegments
@@ -28,9 +31,23 @@ export const getFormattedDurationByRule = (
 
   const preparedSegments = getFormattedSegments(rule, milliseconds.abs(), language);
 
-  preparedSegments.forEach((segmentValue, segmentKey) => {
+  // Подстановку делаем в два прохода через плейсхолдеры, чтобы значение одного
+  // сегмента (например суффикс месяца "мес"/"mo") не было повреждено заменой
+  // другого токена (например минут "m"). Сегменты идут по убыванию длины,
+  // поэтому "MMM" заменяется раньше "M".
+  const segmentEntries = [...preparedSegments.entries()];
+
+  segmentEntries.forEach(([segmentKey], index) => {
     if (isString(result)) {
-      result = result.replace(new RegExp(segmentKey, "g"), segmentValue);
+      const placeholder = PLACEHOLDER_BOUND + index + PLACEHOLDER_BOUND;
+      result = result.replace(new RegExp(segmentKey, "g"), placeholder);
+    }
+  });
+
+  segmentEntries.forEach(([, segmentValue], index) => {
+    if (isString(result)) {
+      const placeholder = PLACEHOLDER_BOUND + index + PLACEHOLDER_BOUND;
+      result = result.replaceAll(placeholder, segmentValue);
     }
   });
 

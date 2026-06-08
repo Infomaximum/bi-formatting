@@ -3,6 +3,9 @@ import {
   CHAR_H,
   CHAR_M,
   CHAR_S,
+  CHAR_YEAR,
+  CHAR_MONTH,
+  CHAR_MILLISECOND,
   MONDAY,
   TUESDAY,
   WEDNESDAY,
@@ -52,23 +55,39 @@ export enum ERuleTypes {
 }
 
 /**
- * Map с локализацией каждого сегмента по его букве
+ * Количество миллисекунд в годе и месяце для разрядов длительности.
+ * Значения берём по соглашению dayjs (plugin/duration): год = 365 дней,
+ * месяц = год / 12. Тогда 12 месяцев = ровно 1 год, без переполнений.
+ * dayjs: years = 31_536_000_000 мс, months = 2_628_000_000 мс.
+ */
+export const MillisecondsPerYear = MillisecondsPerDay * 365;
+export const MillisecondsPerMonth = MillisecondsPerYear / 12;
+
+/**
+ * Map с локализацией каждого сегмента по его букве.
+ * Регистр значим: "Y" — год, "M" — месяц (vs "m" — минута), "S" — миллисекунда (vs "s" — секунда).
  */
 export const charDurationWithLocMap = new Map<string, TLocalizationDescription>([
+  ["Y", CHAR_YEAR],
+  ["M", CHAR_MONTH],
   ["d", CHAR_D],
   ["h", CHAR_H],
   ["m", CHAR_M],
   ["s", CHAR_S],
+  ["S", CHAR_MILLISECOND],
 ]);
 
 /**
  * Map с количеством миллисекунд каждого разряда
  */
 export const msInsideSegment = new Map<string, number>([
+  ["Y", MillisecondsPerYear],
+  ["M", MillisecondsPerMonth],
   ["d", MillisecondsPerDay],
   ["h", MillisecondsPerHour],
   ["m", MillisecondsPerMinute],
   ["s", MillisecondsPerSecond],
+  ["S", 1],
 ]);
 
 export const magnitudeLocMap = new Map<string, TLocalizationDescription>([

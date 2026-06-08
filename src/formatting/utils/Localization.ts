@@ -18,6 +18,21 @@ export const CHAR_S = {
   en: "s",
 };
 
+export const CHAR_YEAR = {
+  ru: "г",
+  en: "y",
+};
+
+export const CHAR_MONTH = {
+  ru: "мес",
+  en: "mo",
+};
+
+export const CHAR_MILLISECOND = {
+  ru: "мс",
+  en: "ms",
+};
+
 export const FORMATTING_IS_INCORRECT = {
   ru: "Форматирование задано неправильно",
   en: "Formatting is set incorrectly",

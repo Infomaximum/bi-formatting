@@ -47,7 +47,16 @@ export const getFormattingRuleSettings = (
   }
 
   if (formatType === EFormatTypes.DURATION && formatTemplate && !isEmpty(formatTemplate)) {
-    settings.durationFormattingRules = getFormattedDurationRules(formatTemplate.toLowerCase());
+    // Обратная совместимость: старые маски длительности были регистронезависимыми
+    // (хранились как введены, а при разборе приводились к нижнему регистру). Сохраняем
+    // это поведение, приводя к нижнему регистру всё, КРОМЕ "Y" (год), "M" (месяц) и
+    // "S" (миллисекунда) — для них регистр значим ("M" vs "m" минута, "S" vs "s" секунда).
+    // Благодаря этому старые маски с заглавными "D"/"H" (например "DD:HH:mm:ss")
+    // продолжают работать как дни/часы.
+    const normalizedTemplate = formatTemplate.replace(/[A-Z]/g, (char) =>
+      char === "Y" || char === "M" || char === "S" ? char : char.toLowerCase()
+    );
+    settings.durationFormattingRules = getFormattedDurationRules(normalizedTemplate);
   }
 
   if (formatType === EFormatTypes.HOUR && !isEmpty(formatTemplate)) {

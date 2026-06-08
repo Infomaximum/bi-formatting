@@ -1,12 +1,15 @@
 import { forEach } from "lodash";
 import { FORMATTING_IS_INCORRECT } from "./Localization";
+import { msInsideSegment } from "./const";
 import type { IDurationRule } from "../types";
 
 export const calcFormattedDurationRule = (
   formatTemplate: string,
   upperLimit?: number
 ): IDurationRule => {
-  const regExp = /^(h{1,3}|d{1,3}|s{1,3}|m{1,3})([n|N](?![n|N])|[k|K](?![k|K])){0,2}$/;
+  // Регистр значим: "Y" — год, "M" — месяц (≠ "m" минута), "S" — миллисекунда (≠ "s" секунда).
+  const regExp =
+    /^(Y{1,3}|M{1,3}|S{1,3}|h{1,3}|d{1,3}|s{1,3}|m{1,3})([n|N](?![n|N])|[k|K](?![k|K])){0,2}$/;
 
   const segmentList = formatTemplate.split(":");
   const result: IDurationRule = { preparedTemplate: "", upperLimit: upperLimit };
@@ -39,7 +42,13 @@ export const calcFormattedDurationRule = (
     segments.push(segment);
   });
 
-  result.includedSegments = includedSegments.sort();
+  // Сегменты разбираем от большего разряда к меньшему (год → месяц → день → …),
+  // поэтому сортируем по количеству мс в разряде по убыванию.
+  // Раньше сортировка была алфавитной — для d/h/m/s это случайно совпадало
+  // с порядком по величине, но ломается при добавлении "Y"/"M".
+  result.includedSegments = includedSegments.sort(
+    (a, b) => (msInsideSegment.get(b) ?? 0) - (msInsideSegment.get(a) ?? 0)
+  );
   result["segments"] = segments.sort((a, b) => {
     return b.length - a.length;
   });
