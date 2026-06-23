@@ -35,6 +35,14 @@ export const prepareFormattedValue = (
       return value;
     }
 
+    // BI-16181: для формата «Строка» значение отображаем как есть, без оборачивания в Decimal
+    // ("1234e56" → "1.234e+59", "007" → "7", "0x1f" → "31" — это был баг рендера). Числа больше INT64
+    // приходят под форматом «Число» и нормализуются в своих ветках, поэтому для «Строки» Decimal не нужен —
+    // возвращаем value до его создания (замечание ревью в PR #9: не создавать Decimal для формата STRING).
+    if (formatType === EFormatTypes.STRING) {
+      return value;
+    }
+
     const preparedValue = getPreparedValue(value);
     const preparedValueString = preparedValue ? preparedValue.toString() : undefined;
     const isDecimalValue = preparedValue instanceof Decimal;
@@ -43,10 +51,6 @@ export const prepareFormattedValue = (
       if (isNaN(Number(value))) {
         return "NaN";
       }
-    }
-
-    if (formatType === EFormatTypes.STRING) {
-      return isDecimalValue ? preparedValueString : value;
     }
 
     if (formatType === EFormatTypes.BOOLEAN) {
