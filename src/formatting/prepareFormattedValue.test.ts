@@ -19,6 +19,28 @@ describe("Test getFormattedValue function", () => {
       expected: "Hello, World!",
     },
     { value: "", conf: { formatType: EFormatTypes.STRING }, expected: "" },
+    // BI-16181: строковое значение не должно нормализоваться через Decimal — показываем как есть
+    { value: "1234e56", conf: { formatType: EFormatTypes.STRING }, expected: "1234e56" },
+    { value: "3.14e2", conf: { formatType: EFormatTypes.STRING }, expected: "3.14e2" },
+    { value: "1e9", conf: { formatType: EFormatTypes.STRING }, expected: "1e9" },
+    { value: "1E5", conf: { formatType: EFormatTypes.STRING }, expected: "1E5" },
+    { value: "+1e5", conf: { formatType: EFormatTypes.STRING }, expected: "+1e5" },
+    { value: "1.5e-10", conf: { formatType: EFormatTypes.STRING }, expected: "1.5e-10" },
+    { value: "007", conf: { formatType: EFormatTypes.STRING }, expected: "007" },
+    { value: "0x1f", conf: { formatType: EFormatTypes.STRING }, expected: "0x1f" },
+    { value: "1e1000000", conf: { formatType: EFormatTypes.STRING }, expected: "1e1000000" },
+    {
+      value: "12345678901234567890123",
+      conf: { formatType: EFormatTypes.STRING },
+      expected: "12345678901234567890123",
+    },
+    { value: "100", conf: { formatType: EFormatTypes.STRING }, expected: "100" },
+    { value: "abc", conf: { formatType: EFormatTypes.STRING }, expected: "abc" },
+    // BI-16181: нестроковые значения под форматом STRING возвращаются как есть, без нормализации
+    // (поведение совпадает с прежним — new Decimal(true/false) бросает, и значение шло в ветку `: value`)
+    { value: true, conf: { formatType: EFormatTypes.STRING }, expected: true },
+    { value: false, conf: { formatType: EFormatTypes.STRING }, expected: false },
+    { value: undefined, conf: { formatType: EFormatTypes.STRING }, expected: undefined },
     { value: NaN, conf: { formatType: EFormatTypes.MONTH }, expected: "NaN" },
     { value: undefined, conf: { formatType: EFormatTypes.DURATION }, expected: "NaN" },
     {
