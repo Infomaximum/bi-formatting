@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1-2603.0](https://github.com/Infomaximum/bi-formatting/compare/v1.4.0...v1.4.1-2603.0) (2026-08-19)
+
+
+### Bug Fixes
+
+* значения формата «Строка» не нормализуются через Decimal ([74bfd52](https://github.com/Infomaximum/bi-formatting/commit/74bfd52cf105ce0766d06abeb9d30807c584c75a)), closes [#9](https://github.com/Infomaximum/bi-formatting/issues/9)
+
 ## [1.4.0](https://github.com/Infomaximum/bi-formatting/compare/v1.3.0...v1.4.0) (2026-04-01)
 
 
